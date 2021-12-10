@@ -58,4 +58,8 @@
     <select id="findById" resultType="com.shf.pojo.CheckItem" parameterType="int">
         select * from t_checkitem where id = #{id}
     </select>
+
+    <select id="findAll" resultType="com.shf.pojo.CheckItem">
+        select * from t_checkitem
+    </select>
 </mapper>

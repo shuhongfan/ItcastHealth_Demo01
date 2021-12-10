@@ -5,6 +5,8 @@ import com.shf.entity.QueryPageBean;
 import com.shf.entity.Result;
 import com.shf.pojo.CheckItem;
 
+import java.util.List;
+
 //服务接口
 public interface CheckItemService {
     public void add(CheckItem checkItem);
@@ -16,4 +18,6 @@ public interface CheckItemService {
     public void edit(CheckItem checkItem);
 
     public CheckItem findById(Integer id);
+
+    public List<CheckItem> findAll();
 }
