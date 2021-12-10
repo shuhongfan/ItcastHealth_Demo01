@@ -1,8 +1,5 @@
 package com.shf.constant;
 
-/**
- * 消息常量
- */
 public class MessageConstant {
     public static final String DELETE_CHECKITEM_FAIL = "删除检查项失败";
     public static final String DELETE_CHECKITEM_SUCCESS = "删除检查项成功";

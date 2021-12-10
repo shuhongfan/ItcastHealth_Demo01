@@ -1,4 +1,4 @@
-package com.shf.POJO;
+package com.shf.pojo;
 
 import java.io.Serializable;
 import java.util.*;

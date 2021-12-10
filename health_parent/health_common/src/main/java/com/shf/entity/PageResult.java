@@ -3,7 +3,6 @@ package com.shf.entity;
 import java.io.Serializable;
 import java.util.List;
 
-
 /**
  * 分页结果封装对象
  */
