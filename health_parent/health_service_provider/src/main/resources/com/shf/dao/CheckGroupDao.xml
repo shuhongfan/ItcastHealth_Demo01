@@ -43,7 +43,7 @@
         select checkitem_id from t_checkgroup_checkitem where checkgroup_id=#{id}
     </select>
 
-<!--    根据ID动态修改检查检查组相关字段-->
+    <!--    根据ID动态修改检查检查组相关字段-->
     <update id="edit" parameterType="com.shf.pojo.CheckGroup">
         update t_checkgroup
         <set>
@@ -73,4 +73,9 @@
     <delete id="deleteAssocication" parameterType="int">
         delete from t_checkgroup_checkitem where checkgroup_id=#{id}
     </delete>
+
+<!--    查询所有检查组-->
+    <select id="findAll" resultType="com.shf.pojo.CheckGroup">
+        select * from t_checkgroup
+    </select>
 </mapper>
