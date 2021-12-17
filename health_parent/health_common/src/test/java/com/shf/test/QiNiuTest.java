@@ -21,7 +21,7 @@ public class QiNiuTest {
     String secretKey = "B8g6Cd26HwaZO6OF3SIGqi1JmIPv3SwfdRtx3Yvi";
     String bucket = "shf-itcasthealth-demo01";
 
-    @Test
+//    @Test
     public void delete(){
         //构造一个带指定 Region 对象的配置类
 //        Configuration cfg = new Configuration(Region.region0());
@@ -44,7 +44,7 @@ public class QiNiuTest {
         }
     }
 
-    @Test
+//    @Test
     public void upload(){
         UploadManager uploadManager = new UploadManager(cfg);
         //如果是Windows情况下，格式是 D:\\qiniu\\test.png
