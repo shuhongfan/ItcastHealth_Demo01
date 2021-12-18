@@ -15,6 +15,7 @@
         <script src="../plugins/vue/vue.js"></script>
         <script src="../plugins/vue/axios-0.18.0.js"></script>
         <script>
+            // 获取预约id/
             var id = getUrlParam("orderId");
         </script>
     </head>
@@ -63,11 +64,21 @@
         var vue = new Vue({
             el:'#app',
             data:{
-                orderInfo:{}
+                orderInfo:{
+                    member: '',
+                    setmeal: '',
+                    orderDate: '',
+                    orderType: ''
+                }
             },
             mounted(){
+                // 发送ajax请求,根据预约ID查询预约相关信息,用于页面展示
                 axios.post("/order/findById.do?id=" + id).then((response) => {
-                    this.orderInfo = response.data.data;
+                    if (response.data.flag){
+                        this.orderInfo = response.data.data;
+                    } else {
+                        this.$message.error(response.data.message)
+                    }
                 });
             }
         });
