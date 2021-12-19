@@ -329,6 +329,17 @@
                     this.pagination.currentPage=currentPage
                     this.findPage()
                 },
+                // 权限不足提示信息
+                showMessage(r){
+                    if(r == 'Error: Request failed with status code 403'){
+                        //权限不足
+                        this.$message.error('无访问权限');
+                        return;
+                    }else{
+                        this.$message.error('未知错误');
+                        return;
+                    }
+                },
                 // 删除
                 handleDelete(row) {
                     console.log(row)
@@ -348,6 +359,8 @@
                             } else { // 执行失败
                                 this.$message.error(res.data.message)
                             }
+                        }).catch(r=>{
+                            this.showMessage(r)
                         })
                     }).catch(()=>{
                         console.log("用户点击了取消按钮!")
