@@ -60,4 +60,8 @@
         select * from t_setmeal where id = #{id}
     </select>
 
+    <select id="findSetmealCount" resultType="java.util.Map">
+        select s.name,count(o.id) value from t_order o,t_setmeal s where s.id=o.setmeal_id group by s.name
+    </select>
+
 </mapper>
