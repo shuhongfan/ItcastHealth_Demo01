@@ -4,9 +4,9 @@
         <!-- 页面meta -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>传智健康</title>
-        <meta name="description" content="传智健康">
-        <meta name="keywords" content="传智健康">
+        <title>美年健康</title>
+        <meta name="description" content="美年健康">
+        <meta name="keywords" content="美年健康">
         <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
         <!-- 引入样式 -->
         <link rel="stylesheet" href="../plugins/elementui/index.css">
@@ -26,8 +26,8 @@
             <div class="app-container">
                 <div class="box" style="width: 100%;height: 100%">
                     <div class="filter-container">
-                        <el-input placeholder="项目编码/项目名称" v-model="pagination.queryString" style="width: 200px;" class="filter-item"></el-input>
-                        <el-button @click="findPage()" class="dalfBut">查询</el-button>
+                        <el-input @change="findPageClick()" clearable placeholder="项目编码/项目名称" v-model="pagination.queryString" style="width: 200px;" class="filter-item"></el-input>
+                        <el-button @click="findPageClick()" class="dalfBut">查询</el-button>
                         <el-button type="primary" class="butT" @click="handleCreate()">新建</el-button>
                     </div>
                     <el-table size="small" current-row-key="id" :data="dataList" stripe highlight-current-row>
@@ -273,6 +273,7 @@
                                         message:res.data.message,
                                         type: 'success'
                                     })
+
                                 } else {  // 执行失败
                                     this.$message.error(res.data.message)
                                 }
@@ -369,6 +370,10 @@
                             message: "用户取消操作"
                         })
                     })
+                },
+                findPageClick(){
+                    this.pagination.currentPage=1
+                    this.findPage()
                 }
             }
         })

@@ -17,7 +17,7 @@ import com.qiniu.util.Auth;
 public class QiniuUtils {
     public  static String accessKey = "CO1_LZvlnRRvDDoCccqFc_RmVItaxu07p9T-pby0";
     public  static String secretKey = "B8g6Cd26HwaZO6OF3SIGqi1JmIPv3SwfdRtx3Yvi";
-    public  static String bucket = "shf-itcasthealth-demo01";
+    public  static String bucket = "shf-health";
     //构造一个带指定Zone对象的配置类
     public  static Configuration cfg = new Configuration(Region.huanan());
 

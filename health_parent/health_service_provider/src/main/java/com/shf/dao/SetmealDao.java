@@ -20,4 +20,12 @@ public interface SetmealDao {
     public Setmeal findById(int id);
 
     public List<Map<String, Object>> findSetmealCount();
+
+    List<Integer> findCheckItemIdsByCheckGroupId(Integer id);
+
+    void edit(Setmeal setmeal);
+
+    void deleteAssocication(Integer id);
+
+    void deleteById(Integer id);
 }

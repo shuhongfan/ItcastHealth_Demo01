@@ -21,7 +21,7 @@
 
 <!--    根据日期范围查询-->
     <select id="getOrderSettingByMonth" parameterType="map" resultType="com.shf.pojo.OrderSetting">
-        select * from t_ordersetting where orderDate between #{begin} and #{end}
+        select * from t_ordersetting where year(orderDate)=#{y} and month(orderDate)=#{m}
     </select>
 
     <!--更新已预约人数-->

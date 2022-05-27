@@ -47,7 +47,7 @@
     <select id="findByCondition" parameterType="string" resultType="com.shf.pojo.CheckGroup">
             select * from t_checkgroup
         <if test="value != null and value != '' and value.length > 0">
-            where code=#{value} or name =#{value} or helpCode=#{value}
+            where code=#{value} or name like  CONCAT('%',#{value},'%') or helpCode=#{value}
         </if>
     </select>
 
@@ -92,7 +92,8 @@
         delete from t_checkgroup_checkitem where checkgroup_id=#{id}
     </delete>
 
-<!--    查询所有检查组-->
+
+    <!--    查询所有检查组-->
     <select id="findAll" resultType="com.shf.pojo.CheckGroup">
         select * from t_checkgroup
     </select>
@@ -103,4 +104,10 @@
         where id in
               (select checkgroup_id from t_setmeal_checkgroup where setmeal_id=#{id})
     </select>
+    <select id="findCountByCheckGroupId" resultType="java.lang.Long">
+        select count(*) from t_setmeal_checkgroup where checkgroup_id=#{checkgroup_id}
+    </select>
+    <delete id="deleteById">
+        delete from t_checkgroup where id=#{id}
+    </delete>
 </mapper>

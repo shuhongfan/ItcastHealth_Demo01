@@ -7,6 +7,7 @@ import com.shf.constant.RedisConstant;
 import com.shf.dao.SetmealDao;
 import com.shf.entity.PageResult;
 import com.shf.entity.QueryPageBean;
+import com.shf.pojo.CheckGroup;
 import com.shf.pojo.Setmeal;
 import com.shf.service.SetmealService;
 import freemarker.template.Configuration;
@@ -146,5 +147,34 @@ public class SetmealServiceImpl implements SetmealService {
     @Override
     public List<Map<String, Object>> findSetmealCount() {
         return setmealDao.findSetmealCount();
+    }
+
+    @Override
+    public void update(Setmeal setmeal, Integer[] checkgroupIds) {
+//        修改检查组基本信息,操作检查组t_checkgroup表
+        setmealDao.edit(setmeal);
+//        清理当前检查组关联的检查项,操作中间关系表t_checkgroup_checkitem表
+        setmealDao.deleteAssocication(setmeal.getId());
+//        重新建立当前检查组和检查项的关联关系
+        this.setSetmealAndCheckGroup(setmeal.getId(),checkgroupIds);
+
+//        当添加套餐后需要重新生成静态页面(套餐列表页面/套餐详情页面)
+        generateMobileStaticHtml();
+    }
+
+
+    @Override
+    public List<Integer> findCheckGroupIdsBySetmealId(Integer id) {
+        return setmealDao.findCheckItemIdsByCheckGroupId(id);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        //        清理当前检查组关联的检查项,操作中间关系表t_checkgroup_checkitem表
+        setmealDao.deleteAssocication(id);
+        setmealDao.deleteById(id);
+
+        //        当添加套餐后需要重新生成静态页面(套餐列表页面/套餐详情页面)
+        generateMobileStaticHtml();
     }
 }

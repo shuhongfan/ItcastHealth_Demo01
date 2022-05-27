@@ -6,6 +6,7 @@ import com.shf.constant.RedisConstant;
 import com.shf.entity.PageResult;
 import com.shf.entity.QueryPageBean;
 import com.shf.entity.Result;
+import com.shf.pojo.CheckGroup;
 import com.shf.pojo.Setmeal;
 import com.shf.service.SetmealService;
 import com.shf.utils.QiniuUtils;
@@ -19,10 +20,10 @@ import org.springframework.web.multipart.MultipartFile;
 import redis.clients.jedis.JedisPool;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
-import static com.shf.constant.MessageConstant.ADD_SETMEAL_FAIL;
-import static com.shf.constant.MessageConstant.ADD_SETMEAL_SUCCESS;
+import static com.shf.constant.MessageConstant.*;
 
 /**
  * 检查套餐管理
@@ -75,5 +76,59 @@ public class SetmealController {
     @RequestMapping("/findPage")
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean){
         return setmealService.pageQuery(queryPageBean);
+    }
+
+    /**
+     * 根据ID查询套餐
+     */
+    @RequestMapping("/findById")
+    public Result findById(Integer id){
+        try {
+            Setmeal setmeal = setmealService.findById(id);
+            return new Result(true,MessageConstant.QUERY_SETMEAL_SUCCESS,setmeal);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, QUERY_SETMEAL_FAIL);
+        }
+    }
+
+    /**
+     * 根据ID查询检查组包含的多个检查组ID
+     */
+    @RequestMapping("/findCheckGroupIdsBySetMealId")
+    public Result findCheckGroupIdsBySetMealId(Integer id){
+        try {
+            List<Integer> checkGroupIds = setmealService.findCheckGroupIdsBySetmealId(id);
+            return new Result(true,MessageConstant.QUERY_SETMEAL_SUCCESS,checkGroupIds);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false,MessageConstant.QUERY_SETMEAL_FAIL);
+        }
+    }
+
+    /**
+     * 更新套餐
+     */
+    @RequestMapping("/update")
+    public Result update(@RequestBody Setmeal setmeal,Integer[] checkgroupIds){
+        try {
+            setmealService.update(setmeal, checkgroupIds);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false,UPDARE_SETMEAL_FAIL);
+        }
+        return new Result(true,UPDATE_SETMEAL_SUCCESS);
+    }
+
+    @RequestMapping("/delete")
+    public Result delete(Integer id){
+        try {
+            setmealService.deleteById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+//            服务调用失败
+            return new Result(false,MessageConstant.DELETE_SETMEAL_FAIL);
+        }
+        return new Result(true,MessageConstant.DELETE_SETMEAL_SUCCESS);
     }
 }

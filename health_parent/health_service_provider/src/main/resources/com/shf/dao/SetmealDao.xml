@@ -43,10 +43,12 @@
             (#{setmealId},#{checkgroupId})
     </insert>
 
+
+
     <select id="findByCondition" parameterType="string" resultType="com.shf.pojo.Setmeal">
         select * from t_setmeal
         <if test="value != null and value != '' and value.length > 0">
-            where code = #{value} or name = #{value} or helpCode = #{value}
+            where code = #{value} or name like  CONCAT('%',#{value},'%') or helpCode = #{value}
         </if>
     </select>
 
@@ -63,5 +65,44 @@
     <select id="findSetmealCount" resultType="java.util.Map">
         select s.name,count(o.id) value from t_order o,t_setmeal s where s.id=o.setmeal_id group by s.name
     </select>
+    <select id="findCheckItemIdsByCheckGroupId" resultType="java.lang.Integer">
+        select checkgroup_id from t_setmeal_checkgroup where setmeal_id=#{id}
+    </select>
 
+    <update id="edit" parameterType="com.shf.pojo.Setmeal">
+        update t_setmeal
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="helpCode != null">
+                helpCode = #{helpCode},
+            </if>
+            <if test="attention != null">
+                attention = #{attention},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="img != null">
+                img = #{img},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <delete id="deleteAssocication">
+        delete from  t_setmeal_checkgroup where setmeal_id=#{id}
+    </delete>
+    <delete id="deleteById">
+        delete from t_setmeal where id=#{id}
+    </delete>
 </mapper>

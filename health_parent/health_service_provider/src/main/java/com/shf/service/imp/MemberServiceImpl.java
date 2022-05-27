@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import sun.security.provider.MD5;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Service(interfaceClass=MemberService.class)
@@ -41,9 +44,9 @@ public class MemberServiceImpl implements MemberService {
     public List<Integer> findMemberCountByMonths(List<String> months) {
         List<Integer> memberCount = new ArrayList<>();
         for (String month : months) {
-            String date = month + ".31";
-            memberCount.add(memberDao.findMemberCountBeforeDate(date));
+            memberCount.add(memberDao.findMemberCountBeforeDate(month));
         }
         return memberCount;
     }
+
 }

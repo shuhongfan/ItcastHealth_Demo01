@@ -4,9 +4,9 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>传智健康</title>
-    <meta name="description" content="传智健康">
-    <meta name="keywords" content="传智健康">
+    <title>美年健康</title>
+    <meta name="description" content="美年健康">
+    <meta name="keywords" content="美年健康">
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <!-- 引入样式 -->
     <link rel="stylesheet" href="../plugins/elementui/index.css">
@@ -72,7 +72,7 @@
                     </el-menu>
                 </el-aside>
                 <el-container>
-                    <iframe name="right" class="el-main" src="ordersetting.html"
+                    <iframe name="right" class="el-main" src="ordersetting.html" id="mainiframe"
                             width="100%" height="100%" frameborder="0"></iframe>
                 </el-container>
             </el-container>
@@ -84,6 +84,15 @@
 <script src="../plugins/elementui/index.js"></script>
 <script src="../js/axios-0.18.0.js"></script>
 <script type="text/javascript" src="../js/jquery.min.js"></script>
+<script>
+    function changeFrameHeight(){
+        var ifm= document.getElementById("mainiframe");
+        ifm.height=document.documentElement.clientHeight-30;
+        ifm.width=document.documentElement.clientWidth;
+    }
+    window.onresize=function(){ changeFrameHeight();}
+    $(function(){changeFrameHeight();});
+</script>
 <script>
     new Vue({
         el: '#app',

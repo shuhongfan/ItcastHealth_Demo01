@@ -16,7 +16,7 @@
 		<band height="79" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="0" width="50" height="50" uuid="27826166-87c8-4bbb-b9c6-d3f6911336ef"/>
-				<imageExpression><![CDATA["https://himg.bdimg.com/sys/portraitn/item/1db9736866736875686f6e6766616e992a"]]></imageExpression>
+				<imageExpression><![CDATA["http://rchbdlw6j.hn-bkt.clouddn.com/logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="190" y="10" width="210" height="30" uuid="ea20813c-5410-4f15-821a-ec27d72817c6"/>

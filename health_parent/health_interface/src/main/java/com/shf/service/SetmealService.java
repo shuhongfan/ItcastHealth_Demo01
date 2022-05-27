@@ -19,4 +19,10 @@ public interface SetmealService {
     public Setmeal findById(int id);
 
     public List<Map<String, Object>> findSetmealCount();
+
+    public void update(Setmeal setmeal, Integer[] checkgroupIds);
+
+    public List<Integer> findCheckGroupIdsBySetmealId(Integer id);
+
+    public void deleteById(Integer id);
 }

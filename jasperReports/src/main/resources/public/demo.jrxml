@@ -17,7 +17,7 @@
 		<band height="90" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="0" width="100" height="86" uuid="1696c855-f322-478c-aecb-12aab31c1743"/>
-				<imageExpression><![CDATA["http://www.itcast.cn/2018czgw/images/logo.png"]]></imageExpression>
+				<imageExpression><![CDATA["http://rchbdlw6j.hn-bkt.clouddn.com/logo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="210" y="20" width="200" height="40" uuid="2e246083-05c6-4dbd-9059-f7fe986d139e"/>

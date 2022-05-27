@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -43,11 +44,11 @@ public class OrderSettingServiceImpl implements OrderSettingService {
 //    根据月份查询对应的预约设置数据
     @Override
     public List<Map> getOrderSettingByMonth(String date) {
-        String begin = date + "-1"; // 2019-6-1
-        String end = date +"-31"; // 2019-6-31
+        String[] split = date.split("-");
+
         Map<String,String> map = new HashMap<>();
-        map.put("begin",begin);
-        map.put("end",end);
+        map.put("y",split[0]);
+        map.put("m",split[1]);
 //        调用dao，根据日期范围查询预约设置数据
         List<OrderSetting> list = orderSettingDao.getOrderSettingByMonth(map);
         List<Map> result = new ArrayList<>();

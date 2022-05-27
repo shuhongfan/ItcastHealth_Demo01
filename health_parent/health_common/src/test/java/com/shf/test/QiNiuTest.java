@@ -17,9 +17,9 @@ public class QiNiuTest {
     //...其他参数参考类注释
 
     //...生成上传凭证，然后准备上传
-    String accessKey = "CO1_LZvlnRRvDDoCccqFc_RmVItaxu07p9T-pby0";
-    String secretKey = "B8g6Cd26HwaZO6OF3SIGqi1JmIPv3SwfdRtx3Yvi";
-    String bucket = "shf-itcasthealth-demo01";
+    public  static String accessKey = "CO1_LZvlnRRvDDoCccqFc_RmVItaxu07p9T-pby0";
+    public  static String secretKey = "B8g6Cd26HwaZO6OF3SIGqi1JmIPv3SwfdRtx3Yvi";
+    public  static String bucket = "shf-health";
 
 //    @Test
     public void delete(){
@@ -48,7 +48,7 @@ public class QiNiuTest {
     public void upload(){
         UploadManager uploadManager = new UploadManager(cfg);
         //如果是Windows情况下，格式是 D:\\qiniu\\test.png
-        String localFilePath = "C:\\Users\\SHF\\Desktop\\SHF.png";
+        String localFilePath = "C:\\Users\\shuho\\Pictures\\shf.jpg";
         //默认不指定key的情况下，以文件内容的hash值作为文件名
         String key = "shf.png";
 

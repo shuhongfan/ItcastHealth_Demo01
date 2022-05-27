@@ -19,14 +19,14 @@
     <!-- 页面头部 -->
     <div class="top-header">
         <span class="f-left"><i class="icon-back" onclick="history.go(-1)"></i></span>
-        <span class="center">传智健康</span>
+        <span class="center">美年健康</span>
         <span class="f-right"><i class="icon-more"></i></span>
     </div>
     <!-- 页面内容 -->
     <div class="contentBox">
         <div class="card">
             <div class="project-img">
-                <img src="http://r3xc4pmd9.hn-bkt.clouddn.com/${setmeal.img}"
+                <img src="http://rchbdlw6j.hn-bkt.clouddn.com/${setmeal.img}"
                      width="100%" height="100%" />
             </div>
             <div class="project-text">

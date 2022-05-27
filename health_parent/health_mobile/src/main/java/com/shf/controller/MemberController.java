@@ -41,6 +41,7 @@ public class MemberController {
 //            判断当前用户是否为会员
             Member member = memberService.findByTelephone(telephone);
             if (member == null) {
+                member = new Member();
 //                不是会员 自动完成注册 （自动将当前用户信息保存到会员列表）
                 member.setRegTime(new Date());
                 member.setPhoneNumber(telephone);

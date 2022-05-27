@@ -15,6 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.junit.Test;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +26,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -56,16 +58,19 @@ public class ReportController {
 //            获取当前时间往后推一个月日期
             calendar.add(Calendar.MONTH, 1);
             Date time = calendar.getTime();
-            months.add(new SimpleDateFormat("yyyy.MM").format(time));
+            calendar.set(Calendar.DATE, calendar.getActualMaximum(Calendar.DATE));
+            months.add(new SimpleDateFormat("yyyy.MM.dd").format(time));
         }
         map.put("months",months);
+        System.out.println(map);
 
         List<Integer> memberCount = memberService.findMemberCountByMonths(months);
         map.put("memberCount",memberCount);
         return new Result(true, MessageConstant.GET_MEMBER_NUMBER_REPORT_SUCCESS,map);
     }
 
-//    套餐预约占比饼形图
+
+    //    套餐预约占比饼形图
     @RequestMapping("/getSetmealReport")
     public Result getSetmealReport(){
         HashMap<String, Object> map = new HashMap<>();

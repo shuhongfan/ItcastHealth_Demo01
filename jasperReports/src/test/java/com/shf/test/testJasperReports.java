@@ -38,8 +38,10 @@ public class testJasperReports {
 //    基于JavaBean数据源方式填充数据
     @Test
     public void test2() throws Exception {
-        String jrxmlPath = "D:\\DEMO\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\demo2.jrxml";
-        String jasperPath = "D:\\DEMO\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\demo2.jasper";
+        String jrxmlPath =
+                "C:\\Users\\shuho\\Documents\\Code\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\demo2.jrxml";
+        String jasperPath =
+                "C:\\Users\\shuho\\Documents\\Code\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\demo2.jasper";
 
         //编译模板,生成后缀为jasper的二进制文件
         JasperCompileManager.compileReportToFile(jrxmlPath,jasperPath);
@@ -66,16 +68,16 @@ public class testJasperReports {
         //填充数据---使用JDBC数据源方式填充
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperPath, paramters, new JRBeanCollectionDataSource(list));
         //输出文件
-        String pdfPath = "D:\\DEMO\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\demo2.pdf";
+        String pdfPath = "C:\\Users\\shuho\\Documents\\Code\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\test2.pdf";
         JasperExportManager.exportReportToPdfFile(jasperPrint,pdfPath);
     }
 
     @Test
     public void test1() throws JRException {
         String jrxmlPath =
-                "D:\\DEMO\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\demo.jrxml";
+                "C:\\Users\\shuho\\Documents\\Code\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\demo.jrxml";
         String jasperPath =
-                "D:\\DEMO\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\demo.jasper";
+                "C:\\Users\\shuho\\Documents\\Code\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\demo.jasper";
 
         //编译模板
         JasperCompileManager.compileReportToFile(jrxmlPath,jasperPath);
@@ -103,7 +105,7 @@ public class testJasperReports {
                         new JRBeanCollectionDataSource(list));
 
         //输出文件
-        String pdfPath = "D:\\DEMO\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\test.pdf";
+        String pdfPath = "C:\\Users\\shuho\\Documents\\Code\\ItcastHealth_Demo01\\jasperReports\\src\\main\\resources\\public\\test.pdf";
         JasperExportManager.exportReportToPdfFile(jasperPrint,pdfPath);
     }
 }
